@@ -81,7 +81,7 @@ def main(inputId, db, debug=False, txt=None):
   #print('#Filtered by splice junction: ' + str(len(hprobes)))
   
   ###############################################################################
-  # 4. Calculate melting temperature and filter
+  # 4. Calculate melting temperature
   ###############################################################################
   _showLog('Step 2/5: Calculating melting temperature...', txt)
 
