@@ -109,7 +109,7 @@ def main(inputId, db, debug=False, txt=None):
   _showLog('Step 4/5: Assessing specificity...', txt)
   
   for x in hprobes:
-    x.do_blast(blastdb) #310.15 K = 37 C
+    x.do_blast(blastdb)
   
   ###############################################################################
   # 7. Write CSV file
