@@ -22,7 +22,7 @@ _debug = False
 # Set environment vars
 ###############################################################################
 os.environ['DATAPATH'] = get_script_path() + '/tools/RNAstructure/data_tables/'
-os.environ['BLASTDB'] = get_script_path() + '/databases/'
+os.environ['BLASTDB'] = get_script_path() + '/database/'
 
 ###############################################################################
 # Fetch dbs
