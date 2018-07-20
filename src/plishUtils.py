@@ -102,7 +102,7 @@ def fetch_exonLen(transcript_id, db):
 # Returns sequence and gene name for transcript id (considering strand)
 ############################################################################### 
 def fetch_seq(transcript_id, db):
-  filepath = get_script_path() + '/database/' + db + '/' + db + '.fa'
+  filepath = get_script_path() + '/database/' + db + '/' + db + '.fna'
   exon_lens = list()
   transcript_id = transcript_id.split('.')[0]
   seq = name = None

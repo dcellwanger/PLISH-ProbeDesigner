@@ -14,7 +14,7 @@ from plishUtils import compl, get_script_path
 ###############################################################################
 # Generate info file
 ###############################################################################
-def write_infoFile(info_fn, db_id, db_name):
+def write_infoFile(info_fn, db_id, db_name, db_comment):
   print 'Writing info file...'
   if not os.path.exists(os.path.dirname(info_fn)):
     try:
@@ -72,7 +72,7 @@ def write_exonFile(gff_fn, out_fn):
           txs2strand[tx_id] = strand
           txs2chrom[tx_id] = chrom
           txs2name[tx_id] = tx_name
-      if lcount % 100000 == 0:
+      if lcount % 500000 == 0:
         print "Processed " + str(lcount) + " lines ..."
   fh.close()
   
@@ -90,21 +90,21 @@ def write_exonFile(gff_fn, out_fn):
       ends = txs2eup[tx_id]
     txs2elen[tx_id] = [sum(x)+1 for x in zip(starts, ends)]
   
-    print "Writing exon file ..."
-    with open(out_fn, "w") as fh:
-      for tx_id in txs2name.keys():
-        elow = txs2elow[tx_id]
-        elow = str(elow).replace('[', '').replace(']', '').replace(' ', '')
-        eup = txs2eup[tx_id]
-        eup = str(eup).replace('[', '').replace(']', '').replace(' ', '')
-        elen = txs2elen[tx_id]
-        elen = str(elen).replace('[', '').replace(']', '').replace(' ', '')
-        strand = txs2strand[tx_id]
-        chrom = txs2chrom[tx_id]
-        name = txs2name[tx_id]
-        fh.write(tx_id + '\t' + '"' + name + '"' + '\t' + chrom + '\t' +
-                 strand + '\t' + elow + '\t' + eup + '\t' + elen + '\n')
-    fh.close()
+  print "Writing exon file ..."
+  with open(out_fn, "w") as fh:
+    for tx_id in txs2name.keys():
+      elow = txs2elow[tx_id]
+      elow = str(elow).replace('[', '').replace(']', '').replace(' ', '')
+      eup = txs2eup[tx_id]
+      eup = str(eup).replace('[', '').replace(']', '').replace(' ', '')
+      elen = txs2elen[tx_id]
+      elen = str(elen).replace('[', '').replace(']', '').replace(' ', '')
+      strand = txs2strand[tx_id]
+      chrom = txs2chrom[tx_id]
+      name = txs2name[tx_id]
+      fh.write(tx_id + '\t' + '"' + name + '"' + '\t' + chrom + '\t' +
+               strand + '\t' + elow + '\t' + eup + '\t' + elen + '\n')
+  fh.close()
 
 ###############################################################################
 # Generate fasta sequence file for each transcript
@@ -126,8 +126,8 @@ def write_sequenceFile(genomeSeq_fn, exon_fn, out_fn):
         eseq = eseq + cseq[s_to-1:s_from-2:-1]
       else: #plus strand
         eseq = eseq + cseq[s_from-1:s_to:1]
-      if strand == '-':
-        eseq = compl(eseq)
+    if strand == '-':
+      eseq = compl(eseq)
     return txid, txname, eseq
 
   chr2info = {}
@@ -144,18 +144,18 @@ def write_sequenceFile(genomeSeq_fn, exon_fn, out_fn):
   cseq = ''
   with open(out_fn, 'w') as fout, open(genomeSeq_fn) as fin:
     for line in fin:
-      if line.startswith(">") and chrom != None:
+      if line.startswith(">") and chrom is not None:
         if chrom in chr2info:
           for eline in chr2info[chrom]:
             txid, txname, eseq = einfo(eline, cseq)
             fout.write('>' + txid + '|' + txname + '\n' + eseq + '\n')
-            #reset
-            cseq = ''
-            chrom = line[1:].split(" ")[0]
-      elif line.startswith(">") and chrom == None:
+          #reset
+          cseq = ''
+          chrom = line[1:].split(" ")[0]
+      elif line.startswith(">") and chrom is None:
         chrom = line[1:].split(" ")[0]
       else:
-        cseq = cseq + line.strip()
+        cseq += line.strip()
     if chrom in chr2info: #last chr seq
       for eline in chr2info[chrom]:
         txid, txname, eseq = einfo(eline, cseq)

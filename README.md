@@ -14,7 +14,7 @@ This tool has been developed and tested using Unix (macOS Sierra).
 #### macOS
 Simply [download](https://github.com/dcellwanger/PLISH-ProbeDesigner/archive/master.zip) this repository and unpack it. To compute some candidate probe features, **PLISH Probe Designer** makes use of two external software packages: `BLAST+` (Camacho *et al*., *BMC Bioinformatics* 2009) and `RNAstructure` (Reuter and Mathews, *BMC Bioinformatics* 2010). Please, download both software archives from [here](void) and unpack them into the `tools` folder of **PLISH Probe Designer**.
 
-### Database creation
+### Database Creation
 To create a transcript database, **PLISH Probe Designer** requires a `gff3` annotation and a matching `fasta` genome sequence file - the same file types that are commonly used to map RNA-Seq reads. Those files can be widely obtained from common genome databases, such as [ENSEMBL](https://uswest.ensembl.org/info/data/ftp/index.html), [NCBI](https://www.ncbi.nlm.nih.gov/genome/doc/ftpfaq/), and [GENCODE](https://www.gencodegenes.org/releases/current.html). For consistency reasons, we recommend to use those files that were basis for read alignment and quantification of your single-cell RNA-Seq experiment.
 
 The script `createDatabase.py` (located in the **PLISH Probe Designer** directory) allows a convenient creation of a database. Within an active Terminal session, the usage of the script can be shown by:
@@ -38,7 +38,7 @@ python createDatabase.py --help
 ###                    assembly)
 ```
 
-### Database deletion
+### Database Deletion
 A database can simply be deleted by removing the respective subfolder in `database` of the **PLISH Probe Designer** directory.
 
 ### Probe Selection
@@ -49,10 +49,10 @@ python probeDesigner.py
 ```
 <img src="img/gui.png" alt="PLISH Probe Designer GUI" width="500px"/>
 
-#### Feature calculation
+#### Feature Calculation
 The first step is to identify all candidate probe sequences and calculate the features. The only information that is needed, is the database and the identifier of the target transcript - its sequence is loaded automatically. After providing this input, hit `Run`. The status of the computation will be shown in the `Progress` panel. **PLISH Probe Designer** automatically runs several thermodynamic analyses (free energy of the canidate probe fold, free energy of the homodimer, and free energy of the duplex with the target region) and a BLAST search against a local organism-specific database to assess probe specificity. Please note that those two steps are quite compute-intensive and therefore, depending on the number of candidates may take some time (~1 minute).
 
-#### Filter and export
+#### Filter and Export
 Next, set the desired parameters to filter proper hybridization probes:
 
 * Minimum GC content
@@ -87,14 +87,38 @@ For the `Left` and `Right` arm of the probe:
 *  `Open5`: Energy cost of opening the two base pairs at the 5'-end of the oligonucleotide in a duplex with the complementary sequence of the H-probe arm
 *  `Open3`: Energy cost of opening the two base pairs at the 3'-end of the oligonucleotide in a duplex with the complementary sequence of the H-probe arm
 
-<!-- #### Example
-As an example, we show how to generate a database for a chicken genome (Gallus gallus) from [NCBI Genome](https://www.ncbi.nlm.nih.gov/genome/?term=gallus%20gallus):
+### Example
+As an example, we generate PLISH H-probes for the gene *TECTA* as annotated in the chicken genome (Gallus gallus) by [NCBI Genome](https://www.ncbi.nlm.nih.gov/genome/?term=gallus%20gallus):
 
-First, we need to download and unpack the [gff3](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/315/GCF_000002315.5_GRCg6a/GCF_000002315.5_GRCg6a_genomic.gff.gz) and [fasta](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/315/GCF_000002315.5_GRCg6a/GCF_000002315.5_GRCg6a_genomic.fna.gz) files. In this example, the files are named `GCF_000002315.5_GRCg6a_genomic.gff` and `GCF_000002315.5_GRCg6a_genomic.fna` and are located in the folder `/Users/dcellwanger/Downloads/`.
+#### Database Creation
+First, we need to download and unpack the [gff3](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/315/GCF_000002315.5_GRCg6a/GCF_000002315.5_GRCg6a_genomic.gff.gz) and [fasta](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/315/GCF_000002315.5_GRCg6a/GCF_000002315.5_GRCg6a_genomic.fna.gz) files. In this example, the files are named `GCF_000002315.5_GRCg6a_genomic.gff` and `GCF_000002315.5_GRCg6a_genomic.fna` and are, for example, located in the folder `/Users/dcellwanger/Downloads/`.
 
 Then, the database is created within a Terminal by:
 
 ```
-python prepareDatabase.py -gff /Users/dcellwanger/Downloads/GCF_000002315.5_GRCg6a_genomic.gff -fna /Users/dcellwanger/Downloads/GCF_000002315.5_GRCg6a_genomic.fna -db ncbi_gga -name 'Chicken (NCBI)' -comment 'Gallus gallus assembly GRCg6a'
+python createDatabase.py -gff /Users/dcellwanger/Downloads/GCF_000002315.5_GRCg6a_genomic.gff -fna /Users/dcellwanger/Downloads/GCF_000002315.5_GRCg6a_genomic.fna -db ncbi_gga -name 'Chicken (NCBI)' -comment 'Gallus gallus assembly GRCg6a'
 ```
---->
+
+```
+### Writing info file...
+### Extracting exon info...
+### Processed 500000 lines ...
+### Processed 1000000 lines ...
+### Processed 1500000 lines ...
+### Calculating exon lengths ...
+### Writing exon file ...
+### Writing sequence file ...
+### Generating BLAST+ database ...
+### 
+### 
+### Building a new DB, current time: 07/19/2018 23:25:37
+### New DB name:   /Users/dcellwanger/PLISH-ProbeDesigner/database/ncbi_gga/ncbi_gga
+### New DB title:  /Users/dcellwanger/PLISH-ProbeDesigner/database/ncbi_gga/ncbi_gga.fna
+### Sequence type: Nucleotide
+### Keep MBits: T
+### Maximum file size: 1000000000B
+### Adding sequences from FASTA; added 8006 sequences in 0.548051 seconds.
+### Generation of database "ncbi_gga" is finished.
+```
+#### Probe Selection
+

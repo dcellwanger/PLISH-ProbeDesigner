@@ -52,14 +52,14 @@ if db_comment is None:
 # Output
 ###############################################################################
 exon_fn = get_script_path() + '/database/' + db_id + '/' + db_id + '.exons'
-txSeq_fn = get_script_path() + '/database/' + db_id + '/' + db_id + '.fa'
+txSeq_fn = get_script_path() + '/database/' + db_id + '/' + db_id + '.fna'
 info_fn = get_script_path() + '/database/' + db_id + '/' + db_id + '.info'
 blastdb = get_script_path() + '/database/' + db_id + '/' + db_id
 
 ###############################################################################
 # RUN
 ###############################################################################
-write_infoFile(info_fn, db_id, db_name)
+write_infoFile(info_fn, db_id, db_name, db_comment)
 write_exonFile(gff_fn, exon_fn)
 write_sequenceFile(fna_fn, exon_fn, txSeq_fn)
 generate_BLASTdb(blastdb, txSeq_fn)
