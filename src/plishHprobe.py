@@ -51,17 +51,17 @@ class Hprobe:
     f.close()
     dg = fold(infile, temperature)
     larm_dg = dg[1].split("\t")
-    self.larm.dg_bimol = larm_dg[1]
-    self.larm.dg_uimol = larm_dg[2]
-    self.larm.dg_duplex = larm_dg[3]
-    self.larm.dg_2bpat5 = larm_dg[4]
-    self.larm.dg_2bpat3 = larm_dg[5]
+    self.larm.dg_bimol = float(larm_dg[1])
+    self.larm.dg_uimol = float(larm_dg[2])
+    self.larm.dg_duplex = float(larm_dg[3])
+    self.larm.dg_2bpat5 = float(larm_dg[4])
+    self.larm.dg_2bpat3 = float(larm_dg[5])
     rarm_dg = dg[2].split("\t")
-    self.rarm.dg_bimol = rarm_dg[1]
-    self.rarm.dg_uimol = rarm_dg[2]
-    self.rarm.dg_duplex = rarm_dg[3]
-    self.rarm.dg_2bpat5 = rarm_dg[4]
-    self.rarm.dg_2bpat3 = rarm_dg[5]
+    self.rarm.dg_bimol = float(rarm_dg[1])
+    self.rarm.dg_uimol = float(rarm_dg[2])
+    self.rarm.dg_duplex = float(rarm_dg[3])
+    self.rarm.dg_2bpat5 = float(rarm_dg[4])
+    self.rarm.dg_2bpat3 = float(rarm_dg[5])
   
   # Calculate blast hits
   def do_blast(self, blastdb):

@@ -5,8 +5,7 @@
 # written by Daniel C. Ellwanger <dcellwanger.dev@gmail.com>
 # last modified Jun 28 2018
 ###############################################################################
-import os
-import sys
+import os, sys
 from argparse import ArgumentParser
 from Tkinter import Tk
 # import modules in src/
@@ -16,7 +15,7 @@ from plishUtils import get_script_path, fetch_dbInfo
 from plishMain import main
 
 # Run tool in debug mode? For devel use only.
-_debug = False
+_debug = True
 
 ###############################################################################
 # Set environment vars
@@ -46,3 +45,4 @@ else: #run via command line
   db = args.db
   inputId = args.tx
   main(inputId, db, debug=_debug)
+  write_probesCSV(inputId, inputName, hprobes, results_fn)

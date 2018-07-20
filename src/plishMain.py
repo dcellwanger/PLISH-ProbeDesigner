@@ -8,35 +8,23 @@ import os, sys
 from re import findall, finditer
 from itertools import compress
 from plishHprobe import Hprobe
-from plishUtils import fetch_exonLen, fetch_seq, get_script_path
-from Tkinter import Text, DISABLED, NORMAL, END
-
-def _showLog(pr, txt):
-    print pr
-    if txt is not None:
-      txt.config(state=NORMAL)
-      txt.insert(END, pr + "\n")
-      txt.see(END)
-      txt.config(state=DISABLED)
-      txt.update()
+from plishUtils import fetch_exonLen, fetch_seq, get_script_path, show_log
 
 def main(inputId, db, debug=False, txt=None):
   if not os.path.exists(get_script_path() + '/database/' + db):
-    _showLog('ERROR: Database ' + db + ' does not exist.', txt)
-    return
+    show_log('ERROR: Database ' + db + ' does not exist.', txt)
+    return None, None, None
   
   inputId = inputId.replace(' ', '')
   inputName, inputSeq = fetch_seq(inputId, db)
   
   if inputName is None:
-    _showLog('ERROR: Transcript ID ' + inputId + ' does not exist.', txt)
-    return
+    show_log('ERROR: Transcript ID ' + inputId + ' does not exist.', txt)
+    return None, None, None
   
-  result_fn = get_script_path() + "/results/" + inputId
-  result_fn += "-" + inputName.replace('"', '') + "_hprobe.csv"
   blastdb = db
   
-  _showLog('Target: ' + inputId + " (" + inputName + ")", txt)
+  show_log('Target: ' + inputId + " (" + inputName + ")", txt)
 
   ###############################################################################
   # 1. Find anchors 
@@ -47,7 +35,7 @@ def main(inputId, db, debug=False, txt=None):
   anc_index = list(compress(anc_index, f))
   anc_seq = [inputSeq[x-19:x+21] for x in anc_index]
   
-  _showLog('#Candidates: ' + str(len(anc_index)), txt)
+  show_log('#Candidates: ' + str(len(anc_index)), txt)
 
   ###############################################################################
   # 2. Init hybridization probes
@@ -60,7 +48,7 @@ def main(inputId, db, debug=False, txt=None):
   ###############################################################################
   # 3. Splice Junction Sites
   ###############################################################################
-  _showLog('Step 1/5: Analyzing splice junction sites...', txt)
+  show_log('Step 1/4: Analyzing splice junction sites...', txt)
   
   elen = fetch_exonLen(inputId, db)
   
@@ -83,7 +71,7 @@ def main(inputId, db, debug=False, txt=None):
   ###############################################################################
   # 4. Calculate melting temperature
   ###############################################################################
-  _showLog('Step 2/5: Calculating melting temperature...', txt)
+  show_log('Step 2/4: Calculating melting temperature...', txt)
 
   for x in hprobes:
     x.calc_tm(c_salt=0.05, p_formamide=None) #1, 0.5
@@ -98,7 +86,7 @@ def main(inputId, db, debug=False, txt=None):
   ###############################################################################
   # 5. Calculate thermodynamic features
   ###############################################################################
-  _showLog('Step 3/5: Calculating thermodynamics...', txt)
+  show_log('Step 3/4: Calculating thermodynamics...', txt)
   
   for x in hprobes:
     x.do_fold(temperature=310.15) #310.15 K = 37 C
@@ -106,51 +94,13 @@ def main(inputId, db, debug=False, txt=None):
   ###############################################################################
   # 6. BLAST
   ###############################################################################
-  _showLog('Step 4/5: Assessing specificity...', txt)
+  show_log('Step 4/4: Assessing specificity...', txt)
   
   for x in hprobes:
     x.do_blast(blastdb)
-  
+    
   ###############################################################################
-  # 7. Write CSV file
+  # Return
   ###############################################################################
-  _showLog('Step 5/5: Writing result file...', txt)
-
-  with open(result_fn, "w") as fh:
-    h = 'Hprobe: Target seq (' + inputId + ' ' + inputName + ')\t'
-    h += 'Hprobe: %GC\t'
-    h += 'Hprobe: Multipe exons?\t'
-    h += 'Hprobe: Exons\t'
-    h += 'Hprobe: Specificity\t'
-    h += 'Hprobe: Blast Hits (Ident%)\t'
-    h += 'Left: Seq\t' + 'Left: Tm\t'
-    h += 'Left: Bimol.\t' + 'Left: Unimol.\t' + 'Left: Duplex\t'
-    h += 'Left: Open5\t' + 'Left: Open3\t'
-    h += 'Right: Seq\t' + 'Right: Tm\t'
-    h += 'Right: Bimol.\t' + 'Right: Unimol.\t' + 'Right: Duplex\t'
-    h += 'Right: Open5\t' + 'Right: Open3'
-    fh.write(h + '\n')
-    for hp in hprobes:
-      l = hp.seq + '\t'
-      l += str(round(hp.gc, 1)) + '\t'
-      l += str(hp.exons[0] != hp.exons[1]) + '\t'
-      l += str(hp.exons).replace('[', '').replace(']', '') + '\t'
-      l += hp.spec + '\t'
-      l += str(hp.bhits).replace('[', '').replace(']', '') + '\t'
-      l += hp.larm.seq + '\t'
-      l += str(hp.larm.tm) + '\t'
-      l += str(hp.larm.dg_bimol) + '\t'
-      l += str(hp.larm.dg_uimol) + '\t'
-      l += str(hp.larm.dg_duplex) + '\t'
-      l += str(hp.larm.dg_2bpat5) + '\t'
-      l += str(hp.larm.dg_2bpat3) + '\t'
-      l += hp.rarm.seq + '\t'
-      l += str(hp.rarm.tm) + '\t'
-      l += str(hp.rarm.dg_bimol) + '\t'
-      l += str(hp.rarm.dg_uimol) + '\t'
-      l += str(hp.rarm.dg_duplex) + '\t'
-      l += str(hp.rarm.dg_2bpat5) + '\t'
-      l += str(hp.rarm.dg_2bpat3) + '\t'
-      fh.write(l + '\n')
-  fh.close()
-  _showLog('Your results are available at: \n' + result_fn, txt)
+  show_log('------------------[ DONE ]------------------', txt)
+  return inputId, inputName, hprobes
