@@ -58,7 +58,7 @@ Next, set the desired parameters to filter proper hybridization probes:
 * Minimum GC content
 * Minimum probe specificity: isoform-specific (only BLAST hits on the target transcript), gene-specific (BLAST hits also on splice variants of the target gene), non-specific (no BLAST hit with an e-value < 10 or BLAST hits also on transcripts of other genes)
 * The desired melting temperature (Tm) range
-* The minimum free energy of the fold [the higher the better; a value of 0 kcal/mol denotes no secondary structure]
+* The minimum free energy of the RNA fold [the higher the better; a value of 0 kcal/mol denotes no secondary structure]
 * The minimum free energy of the homodimer [the higher the better; a value of 0 kcal/mol denotes no homodimerization]
 * The maximum free energy of the duplex with the target sequence [the lower the stronger the binding to its target]
 * If the probe should span an exon junction site of the target transcript
@@ -82,7 +82,7 @@ For the `Left` and `Right` arm of the probe:
 * `Seq`: The sequence of the H-probe arm
 *  `Tm`: The melting temperature of the left arm (according to Nakano _et. al._, _PNAS_ 1999)
 *  `Bimol.`: Folding free energy change of homodimerization of the H-probe arm
-*  `Unimol.`: Folding free energy change of the H-probe arm
+*  `Unimol.`: Folding free energy change of the self-structure of the H-probe arm
 *  `Duplex`: Folding free energy change for the duplex formation of the H-probe arm with the target sequence
 *  `Open5`: Energy cost of opening the two base pairs at the 5'-end of the oligonucleotide in a duplex with the complementary sequence of the H-probe arm
 *  `Open3`: Energy cost of opening the two base pairs at the 3'-end of the oligonucleotide in a duplex with the complementary sequence of the H-probe arm
