@@ -88,7 +88,7 @@ For the `Left` and `Right` arm of the probe:
 *  `Open3`: Energy cost of opening the two base pairs at the 3'-end of the oligonucleotide in a duplex with the complementary sequence of the H-probe arm
 
 ### Example
-As an example, we generate PLISH H-probes for the gene *TECTA* as annotated in the chicken genome (Gallus gallus) by [NCBI Genome](https://www.ncbi.nlm.nih.gov/genome/?term=gallus%20gallus).
+In this example, we generate H-probes for the gene *TECTA* as annotated in the chicken genome (Gallus gallus) by [NCBI Genome](https://www.ncbi.nlm.nih.gov/genome/?term=gallus%20gallus).
 
 #### Database Creation
 First, we need to download and unpack the [gff3](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/315/GCF_000002315.5_GRCg6a/GCF_000002315.5_GRCg6a_genomic.gff.gz) and [fasta](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/315/GCF_000002315.5_GRCg6a/GCF_000002315.5_GRCg6a_genomic.fna.gz) files. In this example, the files are named `GCF_000002315.5_GRCg6a_genomic.gff` and `GCF_000002315.5_GRCg6a_genomic.fna` and are, for example, located in the folder `/Users/dcellwanger/Downloads/`.
