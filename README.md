@@ -87,8 +87,8 @@ For the `Left` and `Right` arm of the probe:
 *  `Open5`: Energy cost of opening the two base pairs at the 5'-end of the oligonucleotide in a duplex with the complementary sequence of the H-probe arm
 *  `Open3`: Energy cost of opening the two base pairs at the 3'-end of the oligonucleotide in a duplex with the complementary sequence of the H-probe arm
 
-### Example
-As an example, we generate PLISH H-probes for the gene *TECTA* as annotated in the chicken genome (Gallus gallus) by [NCBI Genome](https://www.ncbi.nlm.nih.gov/genome/?term=gallus%20gallus):
+<!-- ### Example
+As an example, we generate PLISH H-probes for the gene *TECTA* as annotated in the chicken genome (Gallus gallus) by [NCBI Genome](https://www.ncbi.nlm.nih.gov/genome/?term=gallus%20gallus).
 
 #### Database Creation
 First, we need to download and unpack the [gff3](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/315/GCF_000002315.5_GRCg6a/GCF_000002315.5_GRCg6a_genomic.gff.gz) and [fasta](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/315/GCF_000002315.5_GRCg6a/GCF_000002315.5_GRCg6a_genomic.fna.gz) files. In this example, the files are named `GCF_000002315.5_GRCg6a_genomic.gff` and `GCF_000002315.5_GRCg6a_genomic.fna` and are, for example, located in the folder `/Users/dcellwanger/Downloads/`.
@@ -120,5 +120,8 @@ python createDatabase.py -gff /Users/dcellwanger/Downloads/GCF_000002315.5_GRCg6
 ### Adding sequences from FASTA; added 8006 sequences in 0.548051 seconds.
 ### Generation of database "ncbi_gga" is finished.
 ```
-#### Probe Selection
 
+#### Probe Selection
+Let's start the **PLISH Probe Designer** (`python probeDesigner.py`), select the database 'Chicken (NCBI)' and the *TECTA* transcript NM_204873. Hit the `Run` button and `Save` the probes using the standard filter settings. This 
+
+--> 

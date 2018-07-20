@@ -15,7 +15,7 @@ from plishUtils import get_script_path, fetch_dbInfo
 from plishMain import main
 
 # Run tool in debug mode? For devel use only.
-_debug = True
+_debug = False
 
 ###############################################################################
 # Set environment vars
