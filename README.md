@@ -96,7 +96,11 @@ First, we need to download and unpack the [gff3](ftp://ftp.ncbi.nlm.nih.gov/geno
 Then, the database is created within a Terminal by:
 
 ```
-python createDatabase.py -gff /Users/dcellwanger/Downloads/GCF_000002315.5_GRCg6a_genomic.gff -fna /Users/dcellwanger/Downloads/GCF_000002315.5_GRCg6a_genomic.fna -db ncbi_gga -name 'Chicken (NCBI)' -comment 'Gallus gallus assembly GRCg6a'
+python createDatabase.py \
+-gff /Users/dcellwanger/Downloads/GCF_000002315.5_GRCg6a_genomic.gff \
+-fna /Users/dcellwanger/Downloads/GCF_000002315.5_GRCg6a_genomic.fna \
+-db ncbi_gga -name 'Chicken (NCBI)' \
+-comment 'Gallus gallus assembly GRCg6a'
 ```
 
 ```
