@@ -1,7 +1,6 @@
 #!/usr/bin/python
 ###############################################################################
 # Hybridization probe designer for PLISH
-# https://elifesciences.org/articles/30510
 # written by Daniel C. Ellwanger <dcellwanger.dev@gmail.com>
 # last modified Jun 28 2018
 ###############################################################################
