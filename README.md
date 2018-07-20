@@ -87,7 +87,7 @@ For the `Left` and `Right` arm of the probe:
 *  `Open5`: Energy cost of opening the two base pairs at the 5'-end of the oligonucleotide in a duplex with the complementary sequence of the H-probe arm
 *  `Open3`: Energy cost of opening the two base pairs at the 3'-end of the oligonucleotide in a duplex with the complementary sequence of the H-probe arm
 
-<!--- ### Example
+### Example
 As an example, we generate PLISH H-probes for the gene *TECTA* as annotated in the chicken genome (Gallus gallus) by [NCBI Genome](https://www.ncbi.nlm.nih.gov/genome/?term=gallus%20gallus).
 
 #### Database Creation
@@ -134,8 +134,26 @@ Let's start the **PLISH Probe Designer** (`python probeDesigner.py`), select the
 ### ------------------[ DONE ]------------------
 ```
 
-Then, `Save` the probes using the standard filter settings. This generates the files `TECTA-NM_204873_hprobe.csv` and `TECTA-NM_204873_hprobe.fna` for four selected probes in the results directory. In the latter file, for example, we can find the sequence for an H-probe detectable by 
+Then, `Save` the probes using the standard filter settings. This generates the files `TECTA-NM_204873_hprobe.csv` and `TECTA-NM_204873_hprobe.fna` for four selected probes in the results directory. In the latter file, for example, we can then extract the sequences for the H-probe detectable by PB405 (X6):
 
+```
+>HL6X-TECTA-NM_204873-5813
+TAGGTCAGGAAACTTACGTCGTTATGTCCACACCGTGTTCTTGTAT
+>HR6X-TECTA-NM_204873-5813
+ACGATGTGAGTGCTGTTGGATTATACGTCGAGTTGAATAGCCAGGTT
 
-HR6X
----> 
+>HL6X-TECTA-NM_204873-5956
+TAGGTCAGGAAACTTACGTCGTTATGCACTGTCAGGTTGATCACAC
+>HR6X-TECTA-NM_204873-5956
+TGAGCATTGGCCGCACGACTTTATACGTCGAGTTGAATAGCCAGGTT
+
+>HL6X-TECTA-NM_204873-6187
+TAGGTCAGGAAACTTACGTCGTTATGCCCTCCCTCAATGATGAAGT
+>HR6X-TECTA-NM_204873-6187
+AGCGTAGTTTGTCATTGCTGTTATACGTCGAGTTGAATAGCCAGGTT
+
+>HL6X-TECTA-NM_204873-6473
+TAGGTCAGGAAACTTACGTCGTTATGGCTCACAGCCACCGTTGTCC
+>HR6X-TECTA-NM_204873-6473
+TCACACCAGTCAGATCGTTTTTATACGTCGAGTTGAATAGCCAGGTT
+```
