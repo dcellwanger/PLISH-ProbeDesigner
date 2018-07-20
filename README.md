@@ -122,6 +122,20 @@ python createDatabase.py -gff /Users/dcellwanger/Downloads/GCF_000002315.5_GRCg6
 ```
 
 #### Probe Selection
-Let's start the **PLISH Probe Designer** (`python probeDesigner.py`), select the database 'Chicken (NCBI)' and the *TECTA* transcript NM_204873. Hit the `Run` button and `Save` the probes using the standard filter settings. This generates the files `TECTA-NM_204873_hprobe.csv` and `TECTA-NM_204873_hprobe.fna` for four selected probes in the results directory.   
+Let's start the **PLISH Probe Designer** (`python probeDesigner.py`), select the database 'Chicken (NCBI)' and the *TECTA* transcript NM_204873. Hit the `Run` button. 
 
---->
+```
+### Target: NM_204873 ("TECTA")
+### #Candidates: 548
+### Step 1/4: Analyzing splice junction sites...
+### Step 2/4: Calculating melting temperature...
+### Step 3/4: Calculating thermodynamics...
+### Step 4/4: Assessing specificity...
+### ------------------[ DONE ]------------------
+```
+
+Then, `Save` the probes using the standard filter settings. This generates the files `TECTA-NM_204873_hprobe.csv` and `TECTA-NM_204873_hprobe.fna` for four selected probes in the results directory. In the latter file, for example, we can find the sequence for an H-probe detectable by 
+
+
+HR6X
+---> 
