@@ -13,7 +13,6 @@ from Tkinter import PanedWindow, LabelFrame, Checkbutton
 from Tkinter import DISABLED, NORMAL, END, W, N, E, LEFT, VERTICAL
 
 # Version and default values
-_version = '0.3.0 (2018)'
 _defaultGC = 45
 _defaultMultiExon = True
 _defaultMinTm = 55
@@ -61,7 +60,7 @@ class GUI:
                           ' hybridization probe(s) were exported to ' + \
                           result_fna)
                           
-  def __init__(self, master, dbnames, dbids, debug):
+  def __init__(self, master, dbnames, dbids, debug, version):
     self.dbids = dbids
     self.debug = debug
     
@@ -104,7 +103,7 @@ class GUI:
     
     self.aboutLF = LabelFrame(master, text='About', width=300)
     self.aboutLF.grid(row=5, column=0, rowspan=2, columnspan=2, sticky=N+W)
-    self.versionLbl = Label(self.aboutLF, text='PLISH Probe Designer, Version ' + _version + '\n' + \
+    self.versionLbl = Label(self.aboutLF, text='PLISH Probe Designer, Version ' + version + '\n' + \
                       '(c) Heller lab, Stanford University School of Medicine\n' + \
                       '     Daniel C. Ellwanger <dcellwanger.dev@gmail.com>                       ', 
                       justify=LEFT)

@@ -1,6 +1,6 @@
 ![PLISH Probe Designer Logo](img/plishLogo.gif)
 ``` {r}
-Version 0.3.0
+Version 0.3.1
 (c) Daniel C. Ellwanger, 2018.
 ```
 ### About
@@ -87,7 +87,7 @@ For the `Left` and `Right` arm of the probe:
 *  `Open5`: Energy cost of opening the two base pairs at the 5'-end of the oligonucleotide in a duplex with the complementary sequence of the H-probe arm
 *  `Open3`: Energy cost of opening the two base pairs at the 3'-end of the oligonucleotide in a duplex with the complementary sequence of the H-probe arm
 
-<!-- ### Example
+<!--- ### Example
 As an example, we generate PLISH H-probes for the gene *TECTA* as annotated in the chicken genome (Gallus gallus) by [NCBI Genome](https://www.ncbi.nlm.nih.gov/genome/?term=gallus%20gallus).
 
 #### Database Creation
@@ -111,17 +111,17 @@ python createDatabase.py -gff /Users/dcellwanger/Downloads/GCF_000002315.5_GRCg6
 ### Generating BLAST+ database ...
 ### 
 ### 
-### Building a new DB, current time: 07/19/2018 23:25:37
+### Building a new DB, current time: 07/19/2018 23:54:43
 ### New DB name:   /Users/dcellwanger/PLISH-ProbeDesigner/database/ncbi_gga/ncbi_gga
 ### New DB title:  /Users/dcellwanger/PLISH-ProbeDesigner/database/ncbi_gga/ncbi_gga.fna
 ### Sequence type: Nucleotide
 ### Keep MBits: T
 ### Maximum file size: 1000000000B
-### Adding sequences from FASTA; added 8006 sequences in 0.548051 seconds.
+### Adding sequences from FASTA; added 62160 sequences in 3.70513 seconds.
 ### Generation of database "ncbi_gga" is finished.
 ```
 
 #### Probe Selection
-Let's start the **PLISH Probe Designer** (`python probeDesigner.py`), select the database 'Chicken (NCBI)' and the *TECTA* transcript NM_204873. Hit the `Run` button and `Save` the probes using the standard filter settings. This 
+Let's start the **PLISH Probe Designer** (`python probeDesigner.py`), select the database 'Chicken (NCBI)' and the *TECTA* transcript NM_204873. Hit the `Run` button and `Save` the probes using the standard filter settings. This generates the files `TECTA-NM_204873_hprobe.csv` and `TECTA-NM_204873_hprobe.fna` for four selected probes in the results directory.   
 
---> 
+--->

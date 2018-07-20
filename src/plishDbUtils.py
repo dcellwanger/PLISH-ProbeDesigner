@@ -149,9 +149,9 @@ def write_sequenceFile(genomeSeq_fn, exon_fn, out_fn):
           for eline in chr2info[chrom]:
             txid, txname, eseq = einfo(eline, cseq)
             fout.write('>' + txid + '|' + txname + '\n' + eseq + '\n')
-          #reset
-          cseq = ''
-          chrom = line[1:].split(" ")[0]
+        #reset
+        cseq = ''
+        chrom = line[1:].split(" ")[0]
       elif line.startswith(">") and chrom is None:
         chrom = line[1:].split(" ")[0]
       else:

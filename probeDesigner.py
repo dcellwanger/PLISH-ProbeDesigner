@@ -16,6 +16,7 @@ from plishMain import main
 
 # Run tool in debug mode? For devel use only.
 _debug = False
+_version = '0.3.1 (2018)'
 
 ###############################################################################
 # Set environment vars
@@ -33,7 +34,7 @@ dbnames, dbids = fetch_dbInfo()
 ###############################################################################
 if len(sys.argv) == 1: #run w/ GUI
   root = Tk()
-  my_gui = GUI(root, dbnames, dbids, _debug)
+  my_gui = GUI(root, dbnames, dbids, _debug, _version)
   root.mainloop()
 else: #run via command line
   parser = ArgumentParser()
