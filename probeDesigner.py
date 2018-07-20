@@ -46,4 +46,5 @@ else: #run via command line
   db = args.db
   inputId = args.tx
   main(inputId, db, debug=_debug)
-  write_probesCSV(inputId, inputName, hprobes, results_fn)
+  write_probesCSV(inputId, inputName, hprobes, None)
+  write_probesFNA(inputId, inputName, hprobes, None)
