@@ -3,18 +3,18 @@
 Version 0.3.1
 (c) Daniel C. Ellwanger, 2018.
 ```
-### About
+## About
   **PLISH Probe Designer** facilitates the selection of hybridization probes for the proximity ligation _in situ_ hybridization (PLISH) technology recently pulbished by the Harbury and Desai labs at Stanford University (_Elife_ 2018 Jan 10;7. pii: e30510. doi: [10.7554/eLife.30510](https://doi.org/10.7554/eLife.30510)). PLISH enables rapid and scalable single-cell spatial-profiling of genes of interest using multiplexed hybridization and signal amplification of target RNA species in a single parallel reaction, and the RNAs are then localized within the target tissue with rapid label-image-erase cycles. Therefore, it is a promising technology to inform and validate data analyses from single-cell RNA-Seq experiments.
 
   **PLISH Probe Designer** facilitates the selection and design of proper hybridization probes (H-probes) for PLISH. For each candidate probe of a given target transcript, **PLISH Probe Designer** computes a set of features (e.g., melting temperature, probe specificity and fold), which allows the user to select optimal H-probe sequences. Further, for selected probe sequences, **PLISH Probe Designer** generates the ready-to-order H-probe sequences containing the required connector circle and common bridge sequences for a set of fluorphores (A488, Cy3, Texas Red, Cy5, and PB405).
 
 This tool has been developed and tested using Unix (macOS Sierra).
 
-### Installation
-#### macOS
+## Installation
+### macOS
 Simply [download](https://github.com/dcellwanger/PLISH-ProbeDesigner/archive/master.zip) this repository and unpack it. To compute some candidate probe features, **PLISH Probe Designer** makes use of two external software packages: `BLAST+` (Camacho *et al*., *BMC Bioinformatics* 2009) and `RNAstructure` (Reuter and Mathews, *BMC Bioinformatics* 2010). Please, download both software archives from [here](https://drive.google.com/open?id=10Z4G1dudj6HDbeqwgTbA40H90Uwrxnra) and unpack them into the `tools` folder of **PLISH Probe Designer**.
 
-### Database Creation
+## Database Creation
 To create a transcript database, **PLISH Probe Designer** requires a `gff3` annotation and a matching `fasta` genome sequence file - the same file types that are commonly used to map RNA-Seq reads. Those files can be obtained from common genome databases, such as [ENSEMBL](https://uswest.ensembl.org/info/data/ftp/index.html), [NCBI](https://www.ncbi.nlm.nih.gov/genome/doc/ftpfaq/), and [GENCODE](https://www.gencodegenes.org/releases/current.html). For consistency reasons, we recommend to use those files that were basis for read alignment and quantification in your single-cell RNA-Seq experiment.
 
 The script `createDatabase.py` (located in the **PLISH Probe Designer** directory) allows a convenient creation of a database. Within an active Terminal session, the usage of the script can be shown by:
@@ -38,10 +38,10 @@ python createDatabase.py --help
 ###                    assembly)
 ```
 
-### Database Deletion
+## Database Deletion
 A database can simply be deleted by removing the respective subfolder in `database` of the **PLISH Probe Designer** directory.
 
-### Probe Selection
+## Probe Selection
 After successful installation, **PLISH Probe Designer** can be simply started from within an active Terminal: 
 
 ```
@@ -49,10 +49,10 @@ python probeDesigner.py
 ```
 <img src="img/gui.png" alt="PLISH Probe Designer GUI" width="500px"/>
 
-#### Feature Calculation
+### Feature Calculation
 The first step is to identify all candidate probe sequences and calculate the features. The only information that is needed, is the database and the identifier of the target transcript - its sequence is loaded automatically. After providing this input, hit `Run`. The status of the computation will be shown in the `Progress` panel. **PLISH Probe Designer** automatically runs several thermodynamic analyses (free energy of the canidate probe fold, free energy of the homodimer, and free energy of the duplex with the target region) and a BLAST search against a local organism-specific database to assess probe specificity. Please note that these two steps are quite compute-intensive and therefore, depending on the number of candidates may take some time (~1 minute).
 
-#### Filter and Export
+### Filter and Export
 Next, set the desired parameters to filter proper hybridization probes:
 
 * Minimum GC content
@@ -87,10 +87,10 @@ For the `Left` and `Right` arm of the probe:
 *  `Open5`: Energy cost of opening the two base pairs at the 5'-end of the H-probe arm in a duplex with the complementary sequence
 *  `Open3`: Energy cost of opening the two base pairs at the 3'-end of the H-probe arm in a duplex with the complementary sequence
 
-### Example
+## Example
 In this example, we generate H-probes for the gene *TECTA* as annotated in the chicken genome (Gallus gallus) by [NCBI Genome](https://www.ncbi.nlm.nih.gov/genome/?term=gallus%20gallus).
 
-#### Database Creation
+### Database Creation
 First, we need to download and unpack the [gff3](https://bit.ly/2JLlkEw) and [fasta](https://bit.ly/2LzXw8e) files. In this example, the files are named `GCF_000002315.5_GRCg6a_genomic.gff` and `GCF_000002315.5_GRCg6a_genomic.fna` and are, for example, located in the folder `/Users/dcellwanger/Downloads/`.
 
 Then, the database is created within a Terminal by:
@@ -125,7 +125,7 @@ python createDatabase.py \
 ### Generation of database "ncbi_gga" is finished.
 ```
 
-#### Probe Selection
+### Probe Selection
 Let's start the **PLISH Probe Designer** (`python probeDesigner.py`), select the database 'Chicken (NCBI)' and the *TECTA* transcript NM_204873. Hit the `Run` button. 
 
 ```
