@@ -65,7 +65,7 @@ Next, set the desired parameters to filter proper hybridization probes:
 
 Then hit the `Save` button. Two files are written into the `results` folder: a `csv` file containing all computed features for each probe [can be opened with any Text editor or imported to a Spreadsheet Software, such as MS Excel], and a `fna` FASTA file [can be opened with any Text editor] containing the ready-to-order H-probe sequences for a set of fluorphores (2X = A488, 3X = Cy3, 4X = Texas Red, 5X = Cy5, and 6X = PB405).
 
-**Please note** that the number of selected probes can be easily lowered or increased: just adjust the filter parameters hit `Save` again. It is *not* required to re-run the whole feature calculation.
+**Please note** that the number of selected probes can be easily lowered or increased: just adjust the filter parameters and hit `Save` again. It is *not* required to re-run the whole feature calculation.
 
 The resulting `csv` file contains the following columns:
 
