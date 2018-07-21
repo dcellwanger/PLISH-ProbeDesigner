@@ -72,7 +72,7 @@ The resulting `csv` file contains the following columns:
 * `Hprobe: Id`: The identifier of the H-probe composed of 'gene name-transcript id-index'
 * `Hprobe: Target sequence`: The target sequence
 * `Hprobe: %GC`: The GC content of the target sequence
-* `Hprobe: Multipe exons?`: Indicates if target region spans multiple exons
+* `Hprobe: Multipe exons?`: Indicates if the target region spans multiple exons
 * `Hprobe: Exons`: The exons that are spanned by the target region
 * `Hprobe: Specificity`: The specificity of the H-probe
 * `Hprobe: Blast Hits (Ident%)`: The BLAST hits
