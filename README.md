@@ -73,7 +73,7 @@ The resulting `csv` file contains the following columns:
 * `Hprobe: Target sequence`: The target sequence
 * `Hprobe: %GC`: The GC content of the target sequence
 * `Hprobe: Multipe exons?`: Indicates if the target region spans multiple exons
-* `Hprobe: Exons`: The exons that are spanned by the target region
+* `Hprobe: Exons`: The exons that are spanned by the H-probe
 * `Hprobe: Specificity`: The specificity of the H-probe
 * `Hprobe: Blast Hits (Ident%)`: The BLAST hits
 
