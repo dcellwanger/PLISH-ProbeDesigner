@@ -138,7 +138,7 @@ Let's start the **PLISH Probe Designer** (`python probeDesigner.py`), select the
 ### ------------------[ DONE ]------------------
 ```
 
-Then, `Save` the probes using the standard filter settings. This generates the files `TECTA-NM_204873_hprobe.csv` and `TECTA-NM_204873_hprobe.fna` for four selected probes in the results directory. In the latter file, for example, we can then extract the sequences for the H-probe detectable by PB405 (X6):
+Then, `Save` the probes using the standard filter settings. This generates the files `TECTA-NM_204873_hprobe.csv` and `TECTA-NM_204873_hprobe.fna` for 4 selected probes in the results directory. In the latter file, for example, we can then extract the sequences for the H-probe detectable by PB405 (X6):
 
 ```
 >HL6X-TECTA-NM_204873-5813
