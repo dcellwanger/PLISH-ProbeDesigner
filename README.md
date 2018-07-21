@@ -50,7 +50,7 @@ python probeDesigner.py
 <img src="img/gui.png" alt="PLISH Probe Designer GUI" width="500px"/>
 
 #### Feature Calculation
-The first step is to identify all candidate probe sequences and calculate the features. The only information that is needed, is the database and the identifier of the target transcript - its sequence is loaded automatically. After providing this input, hit `Run`. The status of the computation will be shown in the `Progress` panel. **PLISH Probe Designer** automatically runs several thermodynamic analyses (free energy of the canidate probe fold, free energy of the homodimer, and free energy of the duplex with the target region) and a BLAST search against a local organism-specific database to assess probe specificity. Please note that those two steps are quite compute-intensive and therefore, depending on the number of candidates may take some time (~1 minute).
+The first step is to identify all candidate probe sequences and calculate the features. The only information that is needed, is the database and the identifier of the target transcript - its sequence is loaded automatically. After providing this input, hit `Run`. The status of the computation will be shown in the `Progress` panel. **PLISH Probe Designer** automatically runs several thermodynamic analyses (free energy of the canidate probe fold, free energy of the homodimer, and free energy of the duplex with the target region) and a BLAST search against a local organism-specific database to assess probe specificity. Please note that these two steps are quite compute-intensive and therefore, depending on the number of candidates may take some time (~1 minute).
 
 #### Filter and Export
 Next, set the desired parameters to filter proper hybridization probes:
