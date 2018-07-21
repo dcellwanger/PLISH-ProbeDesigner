@@ -84,8 +84,8 @@ For the `Left` and `Right` arm of the probe:
 *  `Bimol.`: Folding free energy change of homodimerization of the H-probe arm
 *  `Unimol.`: Folding free energy change of the self-structure of the H-probe arm
 *  `Duplex`: Folding free energy change for the duplex formation of the H-probe arm with the target sequence
-*  `Open5`: Energy cost of opening the two base pairs at the 5'-end of the oligonucleotide in a duplex with the complementary sequence of the H-probe arm
-*  `Open3`: Energy cost of opening the two base pairs at the 3'-end of the oligonucleotide in a duplex with the complementary sequence of the H-probe arm
+*  `Open5`: Energy cost of opening the two base pairs at the 5'-end of the H-probe arm in a duplex with the complementary sequence
+*  `Open3`: Energy cost of opening the two base pairs at the 3'-end of the H-probe arm in a duplex with the complementary sequence
 
 ### Example
 In this example, we generate H-probes for the gene *TECTA* as annotated in the chicken genome (Gallus gallus) by [NCBI Genome](https://www.ncbi.nlm.nih.gov/genome/?term=gallus%20gallus).
