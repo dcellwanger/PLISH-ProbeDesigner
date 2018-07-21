@@ -80,7 +80,7 @@ The resulting `csv` file contains the following columns:
 For the `Left` and `Right` arm of the probe:
 
 * `Seq`: The sequence of the H-probe arm
-*  `Tm`: The melting temperature of the left arm (according to Nakano _et. al._, _PNAS_ 1999)
+*  `Tm`: The melting temperature of the H-probe arm (according to Nakano _et. al._, _PNAS_ 1999)
 *  `Bimol.`: Folding free energy change of homodimerization of the H-probe arm
 *  `Unimol.`: Folding free energy change of the self-structure of the H-probe arm
 *  `Duplex`: Folding free energy change for the duplex formation of the H-probe arm with the target sequence
