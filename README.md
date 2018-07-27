@@ -1,8 +1,9 @@
 ![PLISH Probe Designer Logo](img/plishLogo.gif)
 ``` {r}
-Version 0.3.1
 (c) Daniel C. Ellwanger, 2018.
 ```
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+
 ## About
   **PLISH Probe Designer** facilitates the selection of hybridization probes for the proximity ligation _in situ_ hybridization (PLISH) technology recently pulbished by the Harbury and Desai labs at Stanford University (_Elife_ 2018 Jan 10;7. pii: e30510. doi: [10.7554/eLife.30510](https://doi.org/10.7554/eLife.30510)). PLISH enables rapid and scalable single-cell spatial-profiling of genes of interest using multiplexed hybridization and signal amplification of target RNA species in a single parallel reaction, and the RNAs are then localized within the target tissue with rapid label-image-erase cycles. Therefore, it is a promising technology to inform and validate data analyses from single-cell RNA-Seq experiments.
 
