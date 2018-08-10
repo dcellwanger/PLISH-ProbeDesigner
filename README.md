@@ -1,4 +1,5 @@
 <!-- STATUS -->
+![Language](https://img.shields.io/github/languages/top/dcellwanger/PLISH-ProbeDesigner.svg?logo=Python)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 ![License](https://img.shields.io/github/license/dcellwanger/PLISH-ProbeDesigner.svg)
 <!-- ------------------------------------------------------------------------------- -->
