@@ -1,7 +1,7 @@
 <!-- STATUS -->
-![Language](https://img.shields.io/github/languages/top/dcellwanger/PLISH-ProbeDesigner.svg?logo=Python) <!-- [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)-->
+<!-- [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)-->
 ![Version](https://img.shields.io/badge/version-0.3.1-brightgreen.svg)
-![License](https://img.shields.io/github/license/dcellwanger/PLISH-ProbeDesigner.svg)
+![License](https://img.shields.io/github/license/dcellwanger/PLISH-ProbeDesigner.svg) ![Language](https://img.shields.io/github/languages/top/dcellwanger/PLISH-ProbeDesigner.svg?logo=Python)
 <!-- ------------------------------------------------------------------------------- -->
 
 ![PLISH Probe Designer Logo](img/plishLogo.gif)
