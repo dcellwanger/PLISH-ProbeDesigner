@@ -3,7 +3,8 @@
 ![Version](https://img.shields.io/badge/version-0.3.1-brightgreen.svg)
 ![License](https://img.shields.io/github/license/dcellwanger/PLISH-ProbeDesigner.svg)
 ![Platforms](https://img.shields.io/badge/platforms-macOS-blue.svg)
-![Language](https://img.shields.io/github/languages/top/dcellwanger/PLISH-ProbeDesigner.svg?logo=Python)
+![Python](https://img.shields.io/badge/python-2.7-lightgray.svg?logo=python)
+<!-- ![Language](https://img.shields.io/github/languages/top/dcellwanger/PLISH-ProbeDesigner.svg?logo=Python) -->
 <!-- ------------------------------------------------------------------------------- -->
 
 ![PLISH Probe Designer Logo](img/plishLogo.gif)
