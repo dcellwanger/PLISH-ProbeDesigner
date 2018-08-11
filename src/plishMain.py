@@ -16,7 +16,7 @@ def main(inputId, db, debug=False, txt=None):
     return None, None, None
   
   inputId = inputId.replace(' ', '')
-  inputName, inputSeq = fetch_seq(inputId, db)
+  inputName, inputId, inputSeq = fetch_seq(inputId, db)
   
   if inputName is None:
     show_log('ERROR: Transcript ID ' + inputId + ' does not exist.', txt)

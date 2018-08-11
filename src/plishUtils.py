@@ -105,7 +105,7 @@ def fetch_seq(transcript_id, db):
   filepath = get_script_path() + '/database/' + db + '/' + db + '.fna'
   exon_lens = list()
   transcript_id = transcript_id.split('.')[0]
-  seq = name = None
+  seq = name = sid = None
   
   with open(filepath) as fh:
     match = False
@@ -116,11 +116,12 @@ def fetch_seq(transcript_id, db):
         if transcript_id == sdat_id:
           match = True
           name = sdat[1].strip()
+          sid = sdat[0][1:]
       elif match:
         seq = line.strip().upper()
         break
     fh.close()
-  return name, seq
+  return name, sid, seq
   
 ###############################################################################
 # Returns BLAST results

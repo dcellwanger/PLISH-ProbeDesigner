@@ -39,8 +39,9 @@ def write_exonFile(gff_fn, out_fn):
   txs2chrom = {}
   txs2name = {}
   lcount = 0
-  pid = re.compile('.*transcript_id=(.+?);') #transcript_id=(.+);?
-  pname = re.compile('.*gene(?:_id)?=(.+?);')
+  pid = re.compile('.*;transcript_id=(.+?);') #transcript_id=(.+);?
+  pname = re.compile('.*;gene(?:_name)?=(.+?);')
+  pname2 = re.compile('.*;gene(?:_id)?=(.+?);')
   #pname2 = re.compile('.*gene_id=(.+);?)
   with open(gff_fn) as fh:
     for line in fh:
@@ -55,6 +56,8 @@ def write_exonFile(gff_fn, out_fn):
           continue
         tx_id = tx_id.group(1)
         tx_name = pname.match(line).group(1)
+        if tx_name is None:
+          tx_name = pname2.match(line).group(1)
         #tx_id = findall('transcript_id=(.+);?|$', line)[0]
         #tx_name = findall('gene=(.+?);?|$', line)[0]
         #if tx_name == '':

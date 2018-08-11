@@ -1,6 +1,6 @@
 <!-- STATUS -->
 <!-- [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)-->
-![Version](https://img.shields.io/badge/version-0.3.1-brightgreen.svg)
+![Version](https://img.shields.io/badge/version-0.3.2-brightgreen.svg)
 ![License](https://img.shields.io/github/license/dcellwanger/PLISH-ProbeDesigner.svg)
 ![Platforms](https://img.shields.io/badge/platforms-macOS-blue.svg)
 ![Python](https://img.shields.io/badge/python-2.7-lightgray.svg?logo=python)

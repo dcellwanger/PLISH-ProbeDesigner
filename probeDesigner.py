@@ -15,7 +15,7 @@ from plishMain import main
 
 # Run tool in debug mode? For devel use only.
 _debug = False
-_version = '0.3.1 (2018)'
+_version = '0.3.2 (Aug 2018)'
 
 ###############################################################################
 # Set environment vars
