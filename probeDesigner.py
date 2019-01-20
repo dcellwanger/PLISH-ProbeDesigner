@@ -2,7 +2,7 @@
 ###############################################################################
 # Hybridization probe designer for PLISH
 # written by Daniel C. Ellwanger <dcellwanger.dev@gmail.com>
-# last modified Jun 28 2018
+# last modified Jan 20 2019
 ###############################################################################
 import os, sys
 from argparse import ArgumentParser
