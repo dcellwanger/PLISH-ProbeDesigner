@@ -1,6 +1,6 @@
 <!-- STATUS -->
 <!-- [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)-->
-![Version](https://img.shields.io/badge/version-0.3.2-brightgreen.svg)
+![Version](https://img.shields.io/badge/version-0.4.0-brightgreen.svg)
 ![License](https://img.shields.io/github/license/dcellwanger/PLISH-ProbeDesigner.svg)
 ![Platforms](https://img.shields.io/badge/platforms-macOS-blue.svg)
 ![Python](https://img.shields.io/badge/python-2.7-lightgray.svg?logo=python)
@@ -9,7 +9,7 @@
 
 ![PLISH Probe Designer Logo](img/plishLogo.gif)
 ``` {r}
-(c) Daniel C. Ellwanger, 2018.
+(c) Daniel C. Ellwanger, 2018-2019.
 ```
 ## About
   **PLISH Probe Designer** facilitates the selection of hybridization probes for the proximity ligation _in situ_ hybridization (PLISH) technology recently pulbished by the Harbury and Desai labs at Stanford University (_Elife_ 2018 Jan 10;7. pii: e30510. doi: [10.7554/eLife.30510](https://doi.org/10.7554/eLife.30510)). PLISH enables rapid and scalable single-cell spatial-profiling of genes of interest using multiplexed hybridization and signal amplification of target RNA species in a single parallel reaction, and the RNAs are then localized within the target tissue with rapid label-image-erase cycles. Therefore, it is a promising technology to inform and validate data analyses from single-cell RNA-Seq experiments.
@@ -17,6 +17,19 @@
   **PLISH Probe Designer** facilitates the selection and design of proper hybridization probes (H-probes) for PLISH. For each candidate probe of a given target transcript, **PLISH Probe Designer** computes a set of features (e.g., melting temperature, probe specificity and fold), which allows the user to select optimal H-probe sequences. Further, for selected probe sequences, **PLISH Probe Designer** generates the ready-to-order H-probe sequences containing the required connector circle and common bridge sequences for a set of fluorphores (A488, Cy3, Texas Red, Cy5, and PB405).
 
 This tool has been developed and tested using Unix (macOS Sierra).
+
+## News
+01/19 Version 0.4.0
+----------------------
++ Corrected LH and RH assignment
++ Probe name contains start instead of center index
++ Minor bugfixes
+
+08/18 Version 0.3.2
+----------------------
++ Transcript are recognized with or w/o versioning number (e.g., 'NM_204873' or 'NM_204873.2')
++ Gene name is extracted from GENCODE gff3 files
++ Minor bugfixes
 
 ## Installation
 ### macOS
@@ -55,7 +68,7 @@ After successful installation, **PLISH Probe Designer** can be simply started fr
 ```
 python probeDesigner.py
 ```
-<img src="img/gui.png" alt="PLISH Probe Designer GUI" width="500px"/>
+<img src="doc/gui.png" alt="PLISH Probe Designer GUI" width="500px"/>
 
 ### Feature Calculation
 The first step is to identify all candidate probe sequences and calculate the features. The only information that is needed, is the database and the identifier of the target transcript - its sequence is loaded automatically. After providing this input, hit `Run`. The status of the computation will be shown in the `Progress` panel. **PLISH Probe Designer** automatically runs several thermodynamic analyses (free energy of the canidate probe fold, free energy of the homodimer, and free energy of the duplex with the target region) and a BLAST search against a local organism-specific database to assess probe specificity. Please note that these two steps are quite compute-intensive and therefore, depending on the number of candidates may take some time (~1 minute).
@@ -71,7 +84,7 @@ Next, set the desired parameters to filter proper hybridization probes:
 * The maximum free energy of the duplex with the target sequence [the lower the stronger the binding to its target]
 * If the probe should span an exon junction site of the target transcript
 
-Then hit the `Save` button. Two files are written into the `results` folder: a `csv` file containing all computed features for each probe [can be opened with any Text editor or imported to a Spreadsheet Software, such as MS Excel], and a `fna` FASTA file [can be opened with any Text editor] containing the ready-to-order H-probe sequences for a set of fluorphores (2X = A488, 3X = Cy3, 4X = Texas Red, 5X = Cy5, and 6X = PB405).
+Then hit the `Save` button. Two files are written into the `results` folder: a tab-separated `csv` file containing all computed features for each probe [can be opened with any Text editor or imported to a Spreadsheet Software, such as MS Excel], and a `fna` FASTA file [can be opened with any Text editor] containing the ready-to-order H-probe sequences for a set of fluorphores (2X = A488, 3X = Cy3, 4X = Texas Red, 5X = Cy5, and 6X = PB405).
 
 **Please note** that the number of selected probes can be easily lowered or increased: just adjust the filter parameters and hit `Save` again. It is *not* required to re-run the whole feature calculation.
 
@@ -137,7 +150,7 @@ python createDatabase.py \
 Let's start the **PLISH Probe Designer** (`python probeDesigner.py`), select the database 'Chicken (NCBI)' and the *TECTA* transcript NM_204873. Hit the `Run` button. 
 
 ```
-### Target: NM_204873 ("TECTA")
+### Target: NM_204873.2 ("TECTA")
 ### #Candidates: 548
 ### Step 1/4: Analyzing splice junction sites...
 ### Step 2/4: Calculating melting temperature...
@@ -146,29 +159,32 @@ Let's start the **PLISH Probe Designer** (`python probeDesigner.py`), select the
 ### ------------------[ DONE ]------------------
 ```
 
-Then, `Save` the probes using the standard filter settings. This generates the files `TECTA-NM_204873_hprobe.csv` and `TECTA-NM_204873_hprobe.fna` for 4 selected probes in the results directory. In the latter file, for example, we can then extract the sequences for the H-probe detectable by PB405 (X6):
+Then, `Save` the probes using the standard filter settings. This generates the files `TECTA-NM_204873.2_hprobe.csv` and `TECTA-NM_204873.2_hprobe.fna` for 4 selected probes in the results directory. In the latter file, for example, we can then extract the sequences for the H-probe detectable by PB405 (6X):
 
 ```
->HL6X-TECTA-NM_204873-5813
-TAGGTCAGGAAACTTACGTCGTTATGTCCACACCGTGTTCTTGTAT
->HR6X-TECTA-NM_204873-5813
-ACGATGTGAGTGCTGTTGGATTATACGTCGAGTTGAATAGCCAGGTT
+>HL6X-TECTA-NM_204873.2-5795
+TAGGTCAGGAAACTTACGTCGTTATGACGATGTGAGTGCTGTTGGA
+>HR6X-TECTA-NM_204873.2-5795
+TCCACACCGTGTTCTTGTATTTATACGTCGAGTTGAATAGCCAGGTT
 
->HL6X-TECTA-NM_204873-5956
-TAGGTCAGGAAACTTACGTCGTTATGCACTGTCAGGTTGATCACAC
->HR6X-TECTA-NM_204873-5956
-TGAGCATTGGCCGCACGACTTTATACGTCGAGTTGAATAGCCAGGTT
+>HL6X-TECTA-NM_204873.2-5938
+TAGGTCAGGAAACTTACGTCGTTATGTGAGCATTGGCCGCACGACT
+>HR6X-TECTA-NM_204873.2-5938
+CACTGTCAGGTTGATCACACTTATACGTCGAGTTGAATAGCCAGGTT
 
->HL6X-TECTA-NM_204873-6187
-TAGGTCAGGAAACTTACGTCGTTATGCCCTCCCTCAATGATGAAGT
->HR6X-TECTA-NM_204873-6187
-AGCGTAGTTTGTCATTGCTGTTATACGTCGAGTTGAATAGCCAGGTT
+>HL6X-TECTA-NM_204873.2-6169
+TAGGTCAGGAAACTTACGTCGTTATGAGCGTAGTTTGTCATTGCTG
+>HR6X-TECTA-NM_204873.2-6169
+CCCTCCCTCAATGATGAAGTTTATACGTCGAGTTGAATAGCCAGGTT
 
->HL6X-TECTA-NM_204873-6473
-TAGGTCAGGAAACTTACGTCGTTATGGCTCACAGCCACCGTTGTCC
->HR6X-TECTA-NM_204873-6473
-TCACACCAGTCAGATCGTTTTTATACGTCGAGTTGAATAGCCAGGTT
+>HL6X-TECTA-NM_204873.2-6455
+TAGGTCAGGAAACTTACGTCGTTATGTCACACCAGTCAGATCGTTT
+>HR6X-TECTA-NM_204873.2-6455
+GCTCACAGCCACCGTTGTCCTTATACGTCGAGTTGAATAGCCAGGTT
 ```
+
+As well as assess the probes' feature details:
+<img src="doc/example_result.png" alt="Example PLISH Probe Designer result" width="500px"/>
 
 ## License
 [GNU GPLv3](LICENSE)

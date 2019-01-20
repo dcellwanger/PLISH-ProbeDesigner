@@ -147,6 +147,7 @@ def write_sequenceFile(genomeSeq_fn, exon_fn, out_fn):
   cseq = ''
   with open(out_fn, 'w') as fout, open(genomeSeq_fn) as fin:
     for line in fin:
+      line = line.strip()
       if line.startswith(">") and chrom is not None:
         if chrom in chr2info:
           for eline in chr2info[chrom]:

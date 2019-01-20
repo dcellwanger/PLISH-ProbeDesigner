@@ -25,8 +25,8 @@ class Hprobe:
     seq_rc = revcompl(seq)
     self.start = index - 19
     self.end = index + 21
-    self.rarm = _HprobeArm(seq_rc[20:])
-    self.larm = _HprobeArm(seq_rc[:20])
+    self.rarm = _HprobeArm(seq_rc[:20])
+    self.larm = _HprobeArm(seq_rc[20:])
     self.seq = seq
     self.seq_id = seq_id.split('.')[0]
     self.seq_name = seq_name

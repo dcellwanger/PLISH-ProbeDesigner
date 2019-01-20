@@ -228,7 +228,7 @@ def write_probesCSV(inputId, inputName, hprobes, txt):
     h += 'Right: Open5\t' + 'Right: Open3'
     fh.write(h + '\n')
     for hp in hprobes:
-      l = inputName + '-' + inputId + '-' + str(hp.index) + '\t'
+      l = inputName + '-' + inputId + '-' + str(hp.start + 1) + '\t'
       l += hp.seq + '\t'
       l += str(round(hp.gc, 1)) + '\t'
       l += str(hp.exons[0] != hp.exons[1]) + '\t'
@@ -277,7 +277,7 @@ def write_probesFNA(inputId, inputName, hprobes, txt):
   hprobeId = inputName + '-' + inputId
   with open(result_fn, "w") as fh:
     for hp in hprobes:
-      probeName = hprobeId + '-' + str(hp.index)
+      probeName = hprobeId + '-' + str(hp.start + 1)
       for x in sorted(hl.keys()):
         lhead = '>' + 'HL' + x + '-' + probeName
         lseq = hl[x] + hp.larm.seq
