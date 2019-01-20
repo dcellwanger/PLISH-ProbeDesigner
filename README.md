@@ -19,14 +19,12 @@
 This tool has been developed and tested using Unix (macOS Sierra).
 
 ## News
-01/19 Version 0.4.0
-----------------------
+-- 01/19 Version 0.4.0
 + Corrected LH and RH assignment
 + Probe name contains start instead of center index
 + Minor bugfixes
 
-08/18 Version 0.3.2
-----------------------
+-- 08/18 Version 0.3.2
 + Transcript are recognized with or w/o versioning number (e.g., 'NM_204873' or 'NM_204873.2')
 + Gene name is extracted from GENCODE gff3 files
 + Minor bugfixes
@@ -183,7 +181,7 @@ TAGGTCAGGAAACTTACGTCGTTATGTCACACCAGTCAGATCGTTT
 GCTCACAGCCACCGTTGTCCTTATACGTCGAGTTGAATAGCCAGGTT
 ```
 
-As well as assess the probes' feature details:
+The probes' feature details can be assessed in the tab-separated csv file:
 
 <img src="doc/example_result.png" alt="Example PLISH Probe Designer result" width="100%"/>
 
