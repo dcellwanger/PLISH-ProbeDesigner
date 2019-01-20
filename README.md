@@ -19,12 +19,12 @@
 This tool has been developed and tested using Unix (macOS Sierra).
 
 ## News
--- 01/19 Version 0.4.0
+Jan 19 Version 0.4.0
 + Corrected LH and RH assignment
 + Probe name contains start instead of center index
 + Minor bugfixes
 
--- 08/18 Version 0.3.2
+Aug 18 Version 0.3.2
 + Transcript are recognized with or w/o versioning number (e.g., 'NM_204873' or 'NM_204873.2')
 + Gene name is extracted from GENCODE gff3 files
 + Minor bugfixes
