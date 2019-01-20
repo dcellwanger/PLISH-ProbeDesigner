@@ -184,7 +184,8 @@ GCTCACAGCCACCGTTGTCCTTATACGTCGAGTTGAATAGCCAGGTT
 ```
 
 As well as assess the probes' feature details:
-<img src="doc/example_result.png" alt="Example PLISH Probe Designer result" width="500px"/>
+
+<img src="doc/example_result.png" alt="Example PLISH Probe Designer result" width="100%"/>
 
 ## License
 [GNU GPLv3](LICENSE)
